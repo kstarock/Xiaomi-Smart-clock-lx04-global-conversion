@@ -1,0 +1,75 @@
+(bootloader) max-download-size: 0x8000000
+(bootloader) variant: 
+(bootloader) logical-block-size: 0x200
+(bootloader) erase-block-size: 0x0
+(bootloader) hw-revision: 0
+(bootloader) battery-soc-ok: yes
+(bootloader) battery-voltage: 0mV
+(bootloader) partition-size:userdata: 6dcbbe00
+(bootloader) partition-type:userdata: f2fs
+(bootloader) partition-size:cache: 8000000
+(bootloader) partition-type:cache: ext4
+(bootloader) partition-size:super: 60000000
+(bootloader) partition-type:super: raw data
+(bootloader) partition-size:vbmeta_vendor: 400000
+(bootloader) partition-type:vbmeta_vendor: raw data
+(bootloader) partition-size:vbmeta_system: 400000
+(bootloader) partition-type:vbmeta_system: raw data
+(bootloader) partition-size:vbmeta: 400000
+(bootloader) partition-type:vbmeta: raw data
+(bootloader) partition-size:nvdata: 400000
+(bootloader) partition-type:nvdata: raw data
+(bootloader) partition-size:metadata: 2100000
+(bootloader) partition-type:metadata: raw data
+(bootloader) partition-size:md_udc: 1600000
+(bootloader) partition-type:md_udc: raw data
+(bootloader) partition-size:dkb: 200000
+(bootloader) partition-type:dkb: raw data
+(bootloader) partition-size:kb: 200000
+(bootloader) partition-type:kb: raw data
+(bootloader) partition-size:tee2: 500000
+(bootloader) partition-type:tee2: raw data
+(bootloader) partition-size:tee1: 500000
+(bootloader) partition-type:tee1: raw data
+(bootloader) partition-size:frpx: 100000
+(bootloader) partition-type:frpx: raw data
+(bootloader) partition-size:expdb: a00000
+(bootloader) partition-type:expdb: raw data
+(bootloader) partition-size:dtbo: 100000
+(bootloader) partition-type:dtbo: raw data
+(bootloader) partition-size:logo: 800000
+(bootloader) partition-type:logo: raw data
+(bootloader) partition-size:para: 80000
+(bootloader) partition-type:para: raw data
+(bootloader) partition-size:recovery: 1000000
+(bootloader) partition-type:recovery: raw data
+(bootloader) partition-size:boot: 1000000
+(bootloader) partition-type:boot: raw data
+(bootloader) partition-size:lk2: 80000
+(bootloader) partition-type:lk2: raw data
+(bootloader) partition-size:lk: 80000
+(bootloader) partition-type:lk: raw data
+(bootloader) partition-size:seccfg: 40000
+(bootloader) partition-type:seccfg: raw data
+(bootloader) partition-size:persist: 3000000
+(bootloader) partition-type:persist: ext4
+(bootloader) partition-size:nvram: 500000
+(bootloader) partition-type:nvram: raw data
+(bootloader) partition-size:proinfo: 300000
+(bootloader) partition-type:proinfo: raw data
+(bootloader) partition-size:preloader: 40000
+(bootloader) partition-type:preloader: raw data
+(bootloader) serialno: <REDACTED_DEVICE_SERIAL>
+(bootloader) warranty: no
+(bootloader) unlocked: yes
+(bootloader) secure: no
+(bootloader) kernel: lk
+(bootloader) product: mico_x04g
+(bootloader) is-userspace: no
+(bootloader) slot-count: 0
+(bootloader) version-baseband: N/A
+(bootloader) version-bootloader: mico_x04g-451d69f-20210619014509-202112
+(bootloader) version-preloader: 0.1.00
+(bootloader) version: 0.5
+all: Done!!
+finished. total time: 0.010s

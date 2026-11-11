@@ -1,0 +1,22 @@
+=========================================================
+Preloader Fastboot Interceptor (Win32 Low-Latency)
+Monitoring: COM5 | Timeout: 180s
+=========================================================
+[*] Ready and waiting for device connection...
+[*] ACTION REQUIRED: Plug the Micro-USB cable into your clock now!
+---------------------------------------------------------
+[18:31:05] Detected active port: COM5!
+    Preloader raw response: b'READY'
+    Preloader raw response: b'FASTBOOT'
+    Preloader raw response: b'TOOBTSAF'
+
+=========================================================
+>>> [SUCCESS] ACK RECEIVED: TOOBTSAF! <<<
+>>> MediaTek Preloader accepted Fastboot redirection! <<<
+=========================================================
+[*] Waiting 4 seconds for USB Fastboot enumeration...
+[*] Verifying Fastboot USB connection...
+[OK] Fastboot connection confirmed on attempt #1:
+     Device Serial: <REDACTED_DEVICE_SERIAL>	fastboot
+---------------------------------------------------------
+[READY] Device is now in Fastboot mode! You can proceed to next step.

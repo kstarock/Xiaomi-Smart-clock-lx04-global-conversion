@@ -1,0 +1,36 @@
+name: Validate Scripts & Schemas
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Compile and Syntax Check Python Scripts
+        run: |
+          python -m py_compile scripts/setup/check_environment.py
+          python -m py_compile scripts/verification/verify_checksums.py
+          python -m py_compile scripts/fastboot/preloader_fastboot_interceptor.py
+          python -m py_compile scripts/fastboot/flash_global_bootstack.py
+          python -m py_compile scripts/utilities/patch_gpt_unlock.py
+          python -m py_compile scripts/verification/verify_device_state.py
+          python -m py_compile scripts/backup/make_readback_scatter.py
+
+      - name: Validate XML Configurations
+        run: |
+          Get-ChildItem -Path configurations/spft/*.xml | ForEach-Object {
+            [xml]$xml = Get-Content $_.FullName
+            Write-Host "Validated XML: $($_.Name)"
+          }
+        shell: powershell

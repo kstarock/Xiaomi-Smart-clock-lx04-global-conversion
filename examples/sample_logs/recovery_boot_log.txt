@@ -1,0 +1,21 @@
+xiaomi/mico_x04g/mico_x04g
+10/QP1A.190711.020/1.7.5
+user /release-keys
+Use volume up/down and power.
+--------------------------------------------------
+Cannot load Android system. Your data may be corrupt.
+If you continue to get this message, you may need to
+perform a factory data reset and erase all user data
+stored on this device.
+--------------------------------------------------
+Choices:
+  Try again
+  Factory data reset  <-- (Select this to initialize Android 10 cryptographic keys)
+--------------------------------------------------
+[Action taken: User highlighted 'Factory data reset' and pressed Power/Mute]
+Wiping data...
+Formatting /data...
+Formatting /cache...
+Data wipe complete.
+Rebooting system...
+[Result: Device rebooted into Global Android 10 Setup Wizard]

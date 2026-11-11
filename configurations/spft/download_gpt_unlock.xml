@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flashtool-config version="1.0">
+  <general>
+    <chip-name>MT8167</chip-name>
+    <storage-type>EMMC</storage-type>
+    <download-agent>tools/DA_Mi_Hikaru-resign.bin</download-agent>
+    <scatter>configurations/scatter/convert_scatter_global.txt</scatter>
+    <authentication>tools/auth_sv5.auth</authentication>
+    <rom-list>
+      <!-- 
+        PRELOADER BEHAVIOR DISCLOSURE:
+        SP Flash Tool requires the preloader binary to extract EMI DRAM timing tables.
+        Because enable="true" is set, the Download Agent will write 'preloader_mico_x04g.bin'
+        to eMMC BOOT1 (0x00000000 - 0x00040000). Ensure you have backed up your Chinese BOOT1 first!
+      -->
+      <rom enable="true" index="0" partition="preloader">firmware/preloader_mico_x04g.bin</rom>
+      <!-- Unlock Primary & Secondary GPT with partition 12 de-masked to frpx -->
+      <rom enable="true" index="1" partition="pgpt">configurations/gpt/gpt_x04g_unlock.bin</rom>
+      <rom enable="true" index="28" partition="sgpt">configurations/gpt/gpt_backup_x04g_unlock.bin</rom>
+      <!-- Little Kernel v2.0 -->
+      <rom enable="true" index="6" partition="lk">firmware/lk.bin</rom>
+      <rom enable="true" index="7" partition="lk2">firmware/lk.bin</rom>
+      <!-- Excluded Partitions -->
+      <rom enable="false" index="5" partition="seccfg">firmware/seccfg.bin</rom>
+      <rom enable="false" index="8" partition="boot">firmware/boot.bin</rom>
+      <rom enable="false" index="9" partition="recovery">firmware/recovery.bin</rom>
+      <rom enable="false" index="10" partition="para">firmware/para.bin</rom>
+      <rom enable="false" index="11" partition="logo">firmware/logo.bin</rom>
+      <rom enable="false" index="12" partition="dtbo">firmware/dtbo.bin</rom>
+      <rom enable="false" index="15" partition="tee1">firmware/tee1.bin</rom>
+      <rom enable="false" index="16" partition="tee2">firmware/tee2.bin</rom>
+      <rom enable="false" index="22" partition="vbmeta">firmware/vbmeta.bin</rom>
+      <rom enable="false" index="23" partition="vbmeta_system">firmware/vbmeta_system.bin</rom>
+      <rom enable="false" index="24" partition="vbmeta_vendor">firmware/vbmeta_vendor.bin</rom>
+      <rom enable="false" index="25" partition="super">firmware/super.bin</rom>
+      <rom enable="false" index="26" partition="cache">firmware/cache.bin</rom>
+    </rom-list>
+    <connection type="BromUSB" high-speed="true" without-battery="true" timeout-count="300000"/>
+  </general>
+  <commands>
+    <download-only>
+      <da-download-all/>
+    </download-only>
+  </commands>
+</flashtool-config>

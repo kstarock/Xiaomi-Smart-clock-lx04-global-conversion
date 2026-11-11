@@ -1,0 +1,23 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Temporary and log files
+*.tmp
+*.log
+*.bak
+
+# Device-specific backups (contains personal calibration & MAC addresses)
+# Root-level backup directories only; preserve scripts/backup source utilities.
+/backup/
+/LX04-Backup/
+/LX04-Dumps/
+
+# Proprietary vendor firmware binaries (do not commit)
+firmware/*.bin
+firmware/*.img
+tools/*.bin
+tools/*.auth
+!firmware/README.md
