@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.3.0] - 2026-11-11
+
+### Added
+- **Conversion Applications & Tooling Documentation Suite (`tools/`):**
+  - `tools/README.md`: Central tooling index, toolchain architecture, and legal distribution/licensing policy.
+  - `tools/TOOL_VERSIONS.md`: Authoritative matrix of verified tool versions, executable names, vendor origins, SHA-256 hashes, and hardware compatibility. Documents verified host binary SP Flash Tool `v5.1728.00` (`_SPFT.exe`) and `v5.1812.00` compatibility, Fastboot `302830efc153-android`, and `mtkclient` commit `118a000`.
+  - `tools/sp-flash-tool/README.md`: In-depth guide for SP Flash Tool setup, XML download configurations, signed Download Agent (`DA_Mi_Hikaru-resign.bin`) selection, contiguous eMMC flashing, and byte-offset readback rules.
+  - `tools/mtk-client/README.md`: Setup instructions for Bjoern Kerler's `mtkclient`, UsbDk/LibUSB filter driver configuration, and non-destructive diagnostic readback commands.
+  - `tools/adb-fastboot/README.md`: Android SDK Platform Tools (ADB & Fastboot) guide, Windows PATH configuration, OEM bootloader unlock flow, and documentation of the Little Kernel multi-chunk flashing defect.
+  - `tools/usb-drivers/README.md`: MediaTek USB VCOM (`usb2ser.sys`), BROM, and Google Fastboot driver installation and Windows signature verification troubleshooting.
+  - `tools/utilities/README.md`: Documentation for host archive tools (Windows native `tar.exe`, 7-Zip), Python standard-library environment (zero external pip packages required for repository scripts; `pyserial` only needed for `mtkclient`), and conversion automation scripts.
+- **Global X04G Firmware Documentation & Integrity Suite (`firmware/`):**
+  - `firmware/global-x04g/README.md`: Detailed component breakdown of official Global build 1.7.5 (`mico_x04g` / `QP1A.190711.020`), partition targets, filesystem types, and extraction instructions. Explains verified source archive provenance (`dump_mico_x04g.tar.xz`) and technical basis for identical `tee1.bin`/`tee2.bin` hashes (OEM redundant slot packaging).
+  - `firmware/global-x04g/SHA256SUMS.txt`: Authoritative cryptographic SHA-256 integrity manifest for all 13 mandatory and 3 optional Global partition images, cross-referenced against `dump_mico_x04g.tar.xz`.
+  - `firmware/firmware_manifest.json`: Machine-readable partition manifest specifying partition names, exact byte sizes, verified source archive metadata, and SHA-256 hashes.
+- Updated root `README.md` with links to the expanded `tools/` and `firmware/` resources.
+
+---
+
 ## [1.2.0] - 2026-11-11
 
 ### Added

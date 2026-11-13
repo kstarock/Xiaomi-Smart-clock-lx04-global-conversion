@@ -6,23 +6,29 @@ Users must acquire official firmware images independently and place them into th
 
 ---
 
-## 1. Required Firmware Archive
-- **Official Fastboot Package:** `x04g_global_images_1.7.5_20210324.0000.00_10.0_global_8cf90dc97b.tgz` (or community extracted archive `dump_mico_x04g.tar.xz`).
+## 1. Directory Structure & Quick Links
+
+- [**Global X04G Build 1.7.5 Detailed Guide & Component Map**](global-x04g/README.md)
+- [**Global X04G Checksum Manifest**](global-x04g/SHA256SUMS.txt)
+- [**Machine-Readable Firmware Manifest**](firmware_manifest.json)
+
+---
+
+## 2. Required Firmware Archive
+- **Confirmed Source Archive:** `dump_mico_x04g.tar.xz` (Archive size: `857,491,844` bytes, SHA-256: `9ffd2a4b1b66d7f1ae0496b5e7e2f4db3e1d14cad74d03802f1df30d64dde214`). This is the exact archive verified in project evidence.
+- **Reported OEM Archive:** `x04g_global_images_1.7.5_20210324.0000.00_10.0_global_8cf90dc97b.tgz` (Reported OEM package name; unverified in project files).
 - **Target Firmware Build:** Xiaomi Global Smart Clock Build `10/QP1A.190711.020/1.7.5 user/release-keys`.
 - **Extraction Command (PowerShell):**
   ```powershell
-  # If using the official fastboot package (.tgz):
-  tar -xzf x04g_global_images_1.7.5_20210324.0000.00_10.0_global_8cf90dc97b.tgz -C firmware/
-
-  # Or if using a compressed tar.xz dump:
+  # Using the verified source archive:
   tar -xf dump_mico_x04g.tar.xz -C firmware/
   ```
 
 ---
 
-## 2. Mandatory vs. Optional Firmware Components
+## 3. Mandatory vs. Optional Firmware Components
 
-### 2.1 Mandatory Components (Required for Successful Boot)
+### 3.1 Mandatory Components (Required for Successful Boot)
 Place the following extracted images directly into this `firmware/` directory and verify them using `python scripts/verification/verify_checksums.py`:
 
 | File Name | Required Size (Bytes) | SHA-256 Checksum | Partition Destination | Role |
@@ -41,14 +47,14 @@ Place the following extracted images directly into this `firmware/` directory an
 | `md_udc.bin` | 23,068,672 | `1acd2908bee471b61904d1c97f75409da8acad36bf3d79874144d32f67ade3b9` | `md_udc` | Modem / Connectivity UDC |
 | `para.bin` | 524,288 | `d4c4991789c700d33978f51542a354dbdac63c653316517ebd8791765d90b3a5` | `para` | Bootloader Message State |
 
-### 2.2 Optional Components
+### 3.2 Optional Components
 These images are present in full firmware dumps but are not strictly mandatory to establish the initial bootable Android 10 state:
-- `logo.bin` (8,388,608 bytes, SHA-256: `3187c3272d5f0e386ce6809cf5ca29eb248e36780c885fa21cba1b585eb80b85`): Global splash logo.
-- `tee1.bin` / `tee2.bin` (5,242,880 bytes each): Microtrust Trusted Execution Environment binaries.
+- `logo.bin` (8,388,608 bytes, SHA-256: `82ecd4ac0ca574f00b99494fdb782e5e047e273eb9930f6a9a007fe5214aca6d`): Global splash logo.
+- `tee1.bin` / `tee2.bin` (5,242,880 bytes each, SHA-256: `f9848a2d060d5672a11b5f0acd5d037a1ca08acc9f9d6556ed8c9fe29700a309`): Microtrust Trusted Execution Environment binaries.
 
 ---
 
-## 3. Tool Authentication Binaries (Separately Supplied)
+## 4. Tool Authentication Binaries (Separately Supplied)
 For SP Flash Tool to communicate with the MediaTek MT8167 BROM on secure Xiaomi hardware:
 - `DA_Mi_Hikaru-resign.bin` (SHA-256: `1832cb312efdde35634ccf0a100131ac4c182ef9bd22e51c35a0685f9ab3e880`): Download Agent Stage 1 & 2 signed by OEM.
 - `auth_sv5.auth` (SHA-256: `84a89c4e7acd004afef3cd9c775980164ecd735c8aaa8566c58cb574eeee9b3e`): Authentication certificate.

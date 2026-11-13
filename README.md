@@ -8,7 +8,7 @@
 A complete, verified single-device engineering guide and open-source tooling suite to permanently convert the **Xiaomi XiaoAI Smart Clock (China Model: `LX04`)** to the **Official Global Firmware (Model: `X04G`)** running **Android 10**.
 
 > [!IMPORTANT]
-> **Single-Device Validation & Independent Reproducibility:** This procedure was engineered and physically verified on a single development unit (Xiaomi LX04 equipped with Kingston 4GB eMMC). No AI assistant (ChatGPT, Gemini, Antigravity) is required to execute the conversion. Any technically competent user with a Windows PC can follow this manual procedure independently. Note that script syntax validation on a PC does NOT prove physical compatibility on different hardware revisions (such as non-Kingston eMMC chips).
+> **Single-Device Validation & Independent Reproducibility:** This procedure was engineered and physically verified on a single development unit (Xiaomi LX04 equipped with Kingston 4GB eMMC). Any technically competent user with a Windows PC can follow this manual procedure independently. Note that script syntax validation on a PC does NOT prove physical compatibility on different hardware revisions (such as non-Kingston eMMC chips).
 
 ---
 
@@ -71,15 +71,18 @@ The following features have been personally tested and confirmed operational by 
 - Time required: **~25 to 45 minutes** for initial conversion.
 
 ### Required Software & Tooling
-1. **Python 3.8+** (with python added to Windows `PATH`). All repository scripts use standard library modules only; no `pyserial` or `pip` packages required.
-2. **Android SDK Platform Tools** (`fastboot.exe` added to Windows `PATH`). See [`prerequisites/WINDOWS_SETUP.md`](prerequisites/WINDOWS_SETUP.md).
-3. **MediaTek USB VCOM Drivers** (`3.0.1511.0` or compatible). See [`prerequisites/DRIVER_SETUP.md`](prerequisites/DRIVER_SETUP.md).
-4. **SP Flash Tool v5.1812.00** (Win32).
+For complete installation instructions, download sources, and configuration details for every tool used in this project, refer to the [**Tools Guide**](tools/README.md) and the [**Tool Versions Matrix**](tools/TOOL_VERSIONS.md).
+
+1. **Python 3.8+** (with python added to Windows `PATH`). All repository scripts use standard library modules only; no `pyserial` or `pip` packages required. See [`tools/utilities/README.md`](tools/utilities/README.md).
+2. **Android SDK Platform Tools** (`fastboot.exe` added to Windows `PATH`). See [`tools/adb-fastboot/README.md`](tools/adb-fastboot/README.md) and [`prerequisites/WINDOWS_SETUP.md`](prerequisites/WINDOWS_SETUP.md).
+3. **MediaTek USB VCOM Drivers** (`3.0.1511.0` or compatible). See [`tools/usb-drivers/README.md`](tools/usb-drivers/README.md) and [`prerequisites/DRIVER_SETUP.md`](prerequisites/DRIVER_SETUP.md).
+4. **SP Flash Tool v5.1728.00 / v5.1812.00** (Win32). See [`tools/sp-flash-tool/README.md`](tools/sp-flash-tool/README.md).
+5. **MTK Client** (Optional diagnostic tool). See [`tools/mtk-client/README.md`](tools/mtk-client/README.md).
 
 ### Separately Obtained Proprietary Files (Legal Notice)
-To comply with copyright laws, proprietary firmware binaries are NOT distributed in this repository. Users must obtain:
-1. **Official Global Firmware Archive:** `x04g_global_images_1.7.5_20210324.0000.00_10.0_global_8cf90dc97b.tgz` (extracted into `firmware/`).
-2. **Authentic Signed Download Agent & Auth File:** `DA_Mi_Hikaru-resign.bin` and `auth_sv5.auth` (placed into `tools/`).
+To comply with copyright laws, proprietary firmware binaries and signed Download Agents are NOT distributed in this repository. Users must obtain:
+1. **Verified Global Firmware Archive:** `dump_mico_x04g.tar.xz` (extracted into `firmware/`). Detailed per-partition specifications, checksum manifests, and extraction instructions are provided in [`firmware/README.md`](firmware/README.md), [`firmware/global-x04g/README.md`](firmware/global-x04g/README.md), and [`firmware/firmware_manifest.json`](firmware/firmware_manifest.json).
+2. **Authentic Signed Download Agent & Auth File:** `DA_Mi_Hikaru-resign.bin` and `auth_sv5.auth` (placed into `tools/`). See [`tools/sp-flash-tool/README.md`](tools/sp-flash-tool/README.md).
 
 ---
 
@@ -106,7 +109,7 @@ flowchart TD
    ```powershell
    python scripts/setup/check_environment.py
    ```
-2. Extract the official Global firmware archive (`x04g_global_images_1.7.5_20210324.0000.00_10.0_global_8cf90dc97b.tgz`) into `firmware/` as detailed in [`firmware/README.md`](firmware/README.md).
+2. Extract the verified Global firmware archive (`dump_mico_x04g.tar.xz`) into `firmware/` as detailed in [`firmware/README.md`](firmware/README.md).
 3. Verify file integrity against the cryptographic manifest:
    ```powershell
    python scripts/verification/verify_checksums.py
@@ -297,8 +300,26 @@ xiaomi-lx04-global-conversion/
 │       ├── fastboot_flash_all.bat         # Batch flasher for Windows Command Prompt
 │       └── fastboot_flash_all.ps1         # PowerShell flasher for core bootchain
 │
-├── firmware/
-│   └── README.md                  # Firmware acquisition instructions & hash table
+├── tools/                         # Actual conversion applications & tooling suite
+│   ├── README.md                  # Central tooling index & legal redistribution policy
+│   ├── TOOL_VERSIONS.md           # Tool versions, binary names & hardware compatibility
+│   ├── sp-flash-tool/             # SP Flash Tool v5.1812 documentation & configuration
+│   │   └── README.md
+│   ├── mtk-client/                # Bjoern Kerler mtkclient setup & readback commands
+│   │   └── README.md
+│   ├── adb-fastboot/              # Android Platform Tools setup & multi-chunk warning
+│   │   └── README.md
+│   ├── usb-drivers/               # MediaTek VCOM & Fastboot USB drivers guide
+│   │   └── README.md
+│   └── utilities/                 # Python, tar.exe, 7-Zip & archive utilities guide
+│       └── README.md
+│
+├── firmware/                      # Global firmware documentation & integrity manifests
+│   ├── README.md                  # Firmware acquisition instructions & hash table
+│   ├── firmware_manifest.json     # Machine-readable firmware partition specification
+│   └── global-x04g/               # Global build 1.7.5 component guide & checksums
+│       ├── README.md
+│       └── SHA256SUMS.txt
 │
 ├── checksums/
 │   └── SHA256SUMS.txt             # Verified cryptographic checksums manifest

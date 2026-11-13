@@ -1,0 +1,178 @@
+{
+  "device": {
+    "name": "Xiaomi Smart Clock",
+    "china_model": "LX04",
+    "global_model": "X04G",
+    "board_china": "mico_lx04",
+    "board_global": "mico_x04g",
+    "soc": "MediaTek MT8167A",
+    "arch": "ARMv8-A (AArch32 mode)",
+    "target_emmc": {
+      "vendor": "Kingston",
+      "cid_model": "M62704",
+      "capacity_bytes": 3791650816,
+      "sector_count": 7405568,
+      "sector_size_bytes": 512
+    }
+  },
+  "firmware": {
+    "target_android_version": "10",
+    "build_number": "1.7.5",
+    "build_id": "QP1A.190711.020",
+    "build_fingerprint": "xiaomi/mico_x04g/mico_x04g:10/QP1A.190711.020/1.7.5:user/release-keys",
+    "verified_source_archive": "dump_mico_x04g.tar.xz",
+    "verified_source_archive_sha256": "9ffd2a4b1b66d7f1ae0496b5e7e2f4db3e1d14cad74d03802f1df30d64dde214",
+    "verified_source_archive_size_bytes": 857491844,
+    "reported_oem_package_reference": "x04g_global_images_1.7.5_20210324.0000.00_10.0_global_8cf90dc97b.tgz [UNVERIFIED]",
+    "full_flash_dump_sha256": "80353837682340fea64413079c5f320e39432c012649e72aecc2509a9fec303e",
+    "redistribution_policy": "Proprietary OEM software owned by Xiaomi Inc., MediaTek Inc., and Google LLC. Redistribution prohibited without vendor authorization. Users must supply their own independently acquired image files."
+  },
+  "mandatory_partitions": [
+    {
+      "name": "preloader",
+      "file_name": "preloader_mico_x04g.bin",
+      "size_bytes": 169132,
+      "sha256": "84f621317857a28f5566919c3e0770004ecba4f1583a12477b129a2fee3aa530",
+      "destination": "EMMC_BOOT_1 @ offset 0x800",
+      "flashed_via": "SP Flash Tool (v5.1812)",
+      "description": "MediaTek MT8167 DRAM EMI timings and first-stage bootloader"
+    },
+    {
+      "name": "lk",
+      "file_name": "lk.bin",
+      "size_bytes": 524288,
+      "sha256": "79150412079402b321f1e7f2128da273d159dbc569557261bfc8ce663f1427fd",
+      "destination": "lk (LBA 116224) and lk2 (LBA 117248)",
+      "flashed_via": "SP Flash Tool (v5.1812)",
+      "description": "Little Kernel secondary bootloader v2.0"
+    },
+    {
+      "name": "boot",
+      "file_name": "boot.bin",
+      "size_bytes": 16777216,
+      "sha256": "ca7719a8a9407b4d47dfeb5a15b6ab810b43f4de41ff43c0bf265b2ecfcd3d4d",
+      "destination": "boot (LBA 118272)",
+      "flashed_via": "Fastboot CLI",
+      "description": "Global Android 10 Linux kernel and initial ramdisk"
+    },
+    {
+      "name": "recovery",
+      "file_name": "recovery.bin",
+      "size_bytes": 16777216,
+      "sha256": "ac475a12ddfd6c4ebab0bd91fa4401dee8e188de1a77bcae1d7d04be99aa5a2c",
+      "destination": "recovery (LBA 151040)",
+      "flashed_via": "Fastboot CLI",
+      "description": "Global Android Recovery subsystem"
+    },
+    {
+      "name": "dtbo",
+      "file_name": "dtbo.bin",
+      "size_bytes": 1048576,
+      "sha256": "487141aa53a275f0bae74199c6ac70e49a0a78a8c15fbeb4af5a26a2de0b25a3",
+      "destination": "dtbo (LBA 201216)",
+      "flashed_via": "Fastboot CLI",
+      "description": "Device Tree Blob Overlay for display and peripheral configuration"
+    },
+    {
+      "name": "vbmeta",
+      "file_name": "vbmeta.bin",
+      "size_bytes": 4194304,
+      "sha256": "1bb93a61c5da5473afe296e4270a9b20c13fbba16539f812a38e72f5fdb8517c",
+      "destination": "vbmeta (LBA 375296)",
+      "flashed_via": "Fastboot CLI",
+      "description": "Android Verified Boot 2.0 root cryptographic structure"
+    },
+    {
+      "name": "vbmeta_system",
+      "file_name": "vbmeta_system.bin",
+      "size_bytes": 4194304,
+      "sha256": "affa5a3c0cdd084d1c9a9e2ef6c647d2434eef4e3a025b780f03eef28af3cebb",
+      "destination": "vbmeta_system (LBA 383488)",
+      "flashed_via": "Fastboot CLI",
+      "description": "AVB system partition chain validation descriptor"
+    },
+    {
+      "name": "vbmeta_vendor",
+      "file_name": "vbmeta_vendor.bin",
+      "size_bytes": 4194304,
+      "sha256": "532d22f3f651378abf1c20a21c412580fdd6872813e852f8f4a1b9da64709b49",
+      "destination": "vbmeta_vendor (LBA 391680)",
+      "flashed_via": "Fastboot CLI",
+      "description": "AVB vendor partition chain validation descriptor"
+    },
+    {
+      "name": "super",
+      "file_name": "super.bin",
+      "size_bytes": 1610612736,
+      "sha256": "271127b4d3a901b0a3c8ad6f08de6c915a39a0da7ad4f5d4ddf05548f8f3aca7",
+      "destination": "super (LBA 399872)",
+      "flashed_via": "SP Flash Tool (v5.1812 contiguous streaming ONLY)",
+      "description": "Android 10 Dynamic Partitions container (system, vendor, product)"
+    },
+    {
+      "name": "cache",
+      "file_name": "cache.bin",
+      "size_bytes": 134217728,
+      "sha256": "698f588753f51889cb5e6171f36d5948db4658167cd51dd479222fa874af6382",
+      "destination": "cache (LBA 3545600)",
+      "flashed_via": "Fastboot CLI",
+      "description": "Temporary cache ext4 filesystem image"
+    },
+    {
+      "name": "metadata",
+      "file_name": "metadata.bin",
+      "size_bytes": 34603008,
+      "sha256": "c28a8f34a7efbd4cffe424a21e4a6e4d5bfa8b5daccc381f9eb3c1dc5bac689c",
+      "destination": "metadata (LBA 299520)",
+      "flashed_via": "Fastboot CLI",
+      "description": "Dynamic partitions mapping metadata and FBE encryption state"
+    },
+    {
+      "name": "md_udc",
+      "file_name": "md_udc.bin",
+      "size_bytes": 23068672,
+      "sha256": "1acd2908bee471b61904d1c97f75409da8acad36bf3d79874144d32f67ade3b9",
+      "destination": "md_udc (LBA 254464)",
+      "flashed_via": "Fastboot CLI",
+      "description": "Modem and wireless subsystem operational parameters"
+    },
+    {
+      "name": "para",
+      "file_name": "para.bin",
+      "size_bytes": 524288,
+      "sha256": "d4c4991789c700d33978f51542a354dbdac63c653316517ebd8791765d90b3a5",
+      "destination": "para (LBA 183808)",
+      "flashed_via": "Fastboot CLI",
+      "description": "MISC bootloader message parameter block"
+    }
+  ],
+  "optional_partitions": [
+    {
+      "name": "logo",
+      "file_name": "logo.bin",
+      "size_bytes": 8388608,
+      "sha256": "82ecd4ac0ca574f00b99494fdb782e5e047e273eb9930f6a9a007fe5214aca6d",
+      "destination": "logo (LBA 184832)",
+      "flashed_via": "Fastboot CLI / SPFT",
+      "description": "Global boot screen splash animation logo"
+    },
+    {
+      "name": "tee1",
+      "file_name": "tee1.bin",
+      "size_bytes": 5242880,
+      "sha256": "f9848a2d060d5672a11b5f0acd5d037a1ca08acc9f9d6556ed8c9fe29700a309",
+      "destination": "tee1 (LBA 225792)",
+      "flashed_via": "Preserved stock Chinese / Optional SPFT flash",
+      "description": "Microtrust Trusted Execution Environment primary image"
+    },
+    {
+      "name": "tee2",
+      "file_name": "tee2.bin",
+      "size_bytes": 5242880,
+      "sha256": "f9848a2d060d5672a11b5f0acd5d037a1ca08acc9f9d6556ed8c9fe29700a309",
+      "destination": "tee2 (LBA 236032)",
+      "flashed_via": "Preserved stock Chinese / Optional SPFT flash",
+      "description": "Microtrust Trusted Execution Environment secondary backup"
+    }
+  ]
+}
